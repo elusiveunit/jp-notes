@@ -1,0 +1,100 @@
+/* -Base typography
+-----------------------------------------------------------------------------*/
+body {
+  line-height: $base-line-height;
+}
+
+// Headings
+@mixin heading {
+  font-weight: $font-weight-bold;
+}
+@mixin h1 {
+  @include heading;
+  font-size: rem($h1);
+}
+@mixin h2 {
+  @include heading;
+  font-size: rem($h2);
+}
+@mixin h3 {
+  @include heading;
+  font-size: rem($h3);
+}
+@mixin h4 {
+  @include heading;
+  font-size: rem($h4);
+}
+@mixin h5 {
+  @include heading;
+  font-size: rem($h5);
+}
+@mixin h6 {
+  @include heading;
+  font-size: rem($h6);
+}
+h1 {
+  @include h1;
+}
+h2 {
+  @include h2;
+}
+h3 {
+  @include h3;
+}
+h4 {
+  @include h4;
+}
+h5 {
+  @include h5;
+}
+h6 {
+  @include h6;
+}
+
+// Content element spacing
+p,
+ol,
+ul,
+table {
+  margin-bottom: $base-type-spacing;
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6,
+h1 + blockquote,
+h2 + blockquote,
+h3 + blockquote,
+h4 + blockquote,
+h5 + blockquote,
+h6 + blockquote {
+  margin-top: 5px;
+}
+
+// Lists
+ul,
+ol {
+  margin-left: 1em;
+}
+
+// Blockquote
+blockquote {
+  position: relative;
+  padding-left: 35px;
+
+  &::before {
+    content: '\201C';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: bold;
+  }
+  + p cite {
+    display: block;
+    margin-top: -$base-type-spacing / 2;
+  }
+}

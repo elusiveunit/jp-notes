@@ -1,0 +1,10 @@
+{{ if .Params.readMore }}
+  <div class="read-more">
+    <h2>Read more</h2>
+    <ul>
+      {{ range .Params.readMore }}
+        <li><a href="{{ . }}">{{ . }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}

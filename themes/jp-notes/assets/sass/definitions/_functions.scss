@@ -1,0 +1,37 @@
+// Convert px to em
+@function em($px, $context: $base-font-size) {
+  @return $px / $context * 1em;
+}
+
+// Convert px or em to rem
+@function rem($px-or-em, $context: $base-font-size) {
+  @if unit($px-or-em) == 'em' {
+    @return ($px-or-em / 1em) * 1rem;
+  }
+  @return $px-or-em / $context * 1rem;
+}
+
+// https://hugogiraudel.com/2014/01/13/sass-string-replacement-function/
+// https://www.sassmeister.com/gist/1b4f2da5527830088e4d
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+@function map-get-strict($map, $key) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  } @else {
+    @error "ERROR: Key '#{$key}' does not exist in the map #{$map}";
+  }
+}

@@ -1,0 +1,19 @@
+# Browser support for JavaScript enhancements, all of which are nonessential.
+
+# Evergreen and relevant browsers
+last 2 versions
+> 1%
+not dead
+
+# No IE
+not Explorer >= 0
+not ExplorerMobile >= 0
+
+# Opera Mini isn't too good at JS anyway
+not op_mini all
+
+# Should target the Android WebView, which is basically just the current
+# Chrome version, but for some reason it's mapped to Android 4.4 instead
+# which means being stuck in the past forever.
+# https://github.com/babel/babel/issues/8351
+not Android >= 0

@@ -1,0 +1,20 @@
+<div class="sidebar-inner">
+  <div class="main-logo">
+    <a href="{{ .Site.BaseURL }}">
+      日本語の注記
+    </a>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a class="sidebar-nav-item{{ if .Page.IsHome }} active{{ end }}" href="{{ .Site.BaseURL }}">Start</a></li>
+      {{ range .Site.RegularPages.ByTitle }}
+        <li><a class="sidebar-nav-item{{ if eq .URL $.RelPermalink }} active{{ end }}" href="{{ .URL }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+
+  <div class="sidebar-theme-switcher">
+    {{ partial "theme-switcher.html" . }}
+  </div>
+</div>

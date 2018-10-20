@@ -1,0 +1,53 @@
+/* -Global base styling
+-----------------------------------------------------------------------------*/
+html,
+body {
+  min-height: 100vh;
+}
+body {
+  @include theme-background;
+}
+body,
+button,
+input,
+textarea,
+kbd {
+  @include theme-foreground;
+  font-family: $font-stack-main;
+}
+
+pre,
+code {
+  font-family: $font-stack-mono;
+}
+
+// Links
+a:link,
+a:visited {
+  @include theme-action-foreground;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+// Cursors for form elements
+label,
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  cursor: pointer;
+}
+button[disabled],
+input[disabled] {
+  cursor: not-allowed;
+}
+
+// Navigation
+nav {
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+}

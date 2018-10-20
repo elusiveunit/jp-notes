@@ -1,0 +1,73 @@
+/* -Tables
+-----------------------------------------------------------------------------*/
+$table-border-tint-shade-amount: 0.15;
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: inherit;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+caption {
+  @include h3;
+}
+
+th,
+td {
+  @include theme-tint-shade-transparent(
+    $rule: border-bottom,
+    $value-template: '1px solid {{color}}',
+    $amount: $table-border-tint-shade-amount
+  );
+
+  padding: 5px 10px;
+  white-space: nowrap;
+  text-align: left;
+  font-size: rem($base-font-size - 2px);
+
+  &:not([colspan]) span[lang='ja'] {
+    font-size: rem($base-font-size);
+  }
+  thead & {
+    @include theme-tint-shade-transparent(
+      $rule: border-top,
+      $value-template: '1px solid {{color}}',
+      $amount: $table-border-tint-shade-amount
+    );
+  }
+}
+
+th[scope='row'] {
+  padding-right: 20px;
+  text-align: right;
+
+  & + td {
+    padding-left: 20px;
+  }
+}
+
+tbody th[colspan] {
+  @include theme-tint-shade-transparent(background-color, 0.03);
+}
+
+.table--bordered {
+  th,
+  td {
+    &:not(:last-child) {
+      @include theme-tint-shade-transparent(
+        $rule: border-right,
+        $value-template: '1px solid {{color}}',
+        $amount: $table-border-tint-shade-amount
+      );
+    }
+  }
+}
+
+.table--center {
+  thead th,
+  td {
+    text-align: center;
+  }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Japanese notes</title>
+    <link>http://example.com/jp-notes/</link>
+    <description>Recent content on Japanese notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Sep 2018 19:22:49 +0200</lastBuildDate>
+    
+	<atom:link href="http://example.com/jp-notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Demonstratives</title>
+      <link>http://example.com/jp-notes/demonstratives/</link>
+      <pubDate>Mon, 15 Oct 2018 20:26:19 +0200</pubDate>
+      
+      <guid>http://example.com/jp-notes/demonstratives/</guid>
+      <description>Words used to indicate which entities are being referred to and to distinguish those entities from others
+ https://en.wikipedia.org/wiki/Demonstrative
+Groups of words with a similar ko-so-a-do pattern.
+ こ: close to the speaker (e.g. &amp;ldquo;this dog&amp;rdquo;) そ: close to the listener (e.g. &amp;ldquo;that store&amp;rdquo;). あ: far from both speaker and listener, but that can be seen or understood (e.g. &amp;ldquo;that mountain over there&amp;rdquo;). ど: questioning what or which (e.g. &amp;ldquo;what car?</description>
+    </item>
+    
+    <item>
+      <title>Similar Words</title>
+      <link>http://example.com/jp-notes/similar-words/</link>
+      <pubDate>Thu, 04 Oct 2018 20:30:32 +0200</pubDate>
+      
+      <guid>http://example.com/jp-notes/similar-words/</guid>
+      <description>明らか and 明白  明らか = neutral, for conversation and writing
+明白 = more polite, usually used for writing
+ https://hinative.com/ja/questions/354061</description>
+    </item>
+    
+    <item>
+      <title>Particles</title>
+      <link>http://example.com/jp-notes/particles/</link>
+      <pubDate>Thu, 27 Sep 2018 19:19:51 +0200</pubDate>
+      
+      <guid>http://example.com/jp-notes/particles/</guid>
+      <description>は (wa) 1. Topic marker Marks the topic of discussion. Can be thought of like &amp;ldquo;as for&amp;rdquo; or &amp;ldquo;regarding&amp;rdquo;.
+明日あしたは火か曜日ようびですAs for tomorrow, it&#39;s Tuesday = Tomorrow is Tuesday
+ 2. Contrast marker Shows contrast between several things in a sentence.
+肉にくは食たべますが、魚さかなは食たべませんI eat meat, but I don&#39;t eat fish
+ The contrasting thing can also be implied rather than explicitly stated.
+あの映えい画がは見みませんでしたI didn&#39;t see that movie
+(Can imply I saw this one)</description>
+    </item>
+    
+  </channel>
+</rss>

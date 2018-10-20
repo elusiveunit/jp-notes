@@ -1,0 +1,30 @@
+{
+  "name": "jp-notes",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "cross-env BABEL_ENV=production rollup -c",
+    "js-w": "cross-env BABEL_ENV=development rollup -c --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.1.2",
+    "@babel/plugin-proposal-class-properties": "~7.1.0",
+    "@babel/preset-env": "~7.1.0",
+    "autoprefixer": "~9.1.5",
+    "babel-cli": "~6.26.0",
+    "babel-eslint": "~10.0.1",
+    "babel-preset-minify": "~0.5.0",
+    "cross-env": "~5.2.0",
+    "eslint": "~5.7.0",
+    "eslint-config-airbnb-base": "~13.1.0",
+    "eslint-plugin-import": "~2.14.0",
+    "fast-glob": "~2.2.3",
+    "postcss": "~7.0.4",
+    "postcss-cli": "~6.0.0",
+    "prettier": "~1.14.3",
+    "rollup": "~0.66.6",
+    "rollup-plugin-babel": "~4.0.3",
+    "rollup-plugin-filesize": "~5.0.1",
+    "rollup-plugin-node-resolve": "~3.4.0"
+  }
+}

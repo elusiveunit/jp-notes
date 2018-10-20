@@ -1,0 +1,5 @@
+baseURL = "http://example.com/jp-notes"
+languageCode = "en-us"
+title = "Japanese notes"
+theme = "jp-notes"
+sectionPagesMenu = "main"

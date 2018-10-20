@@ -1,0 +1,44 @@
+/* -Colors
+-----------------------------------------------------------------------------*/
+// Color definitions
+$theme-light-background: #fffcf9;
+$theme-light-background-accent: #f5f7f9;
+$theme-light-foreground: #223344;
+$theme-light-action: #2d8dd4;
+
+// Color usage
+$body-background: $theme-light-background;
+$body-foreground: $theme-light-foreground;
+
+$action-foreground: $theme-light-action;
+
+$sidebar-background: $theme-light-background-accent;
+
+/* -Layout
+-----------------------------------------------------------------------------*/
+$sidebar-width: 250px;
+$main-body-width: 650px;
+$main-body-padding-horizontal: 50px;
+
+/* -Type
+-----------------------------------------------------------------------------*/
+$font-stack-main: 'Source Sans Pro', sans-serif;
+$font-stack-mono: Consolas, monospace;
+$font-stack-jp: 'Source Han Serif', source-han-serif-japanese, serif;
+
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-jp-regular: 300;
+$font-weight-jp-bold: 900;
+
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$base-type-spacing: $base-line-height * 1em;
+
+$h1: 48px;
+$h2: 28px;
+$h3: 21px;
+$h4: 18px;
+$h5: $base-font-size;
+$h6: $base-font-size;

@@ -1,0 +1,82 @@
+/* -Sidebar
+-----------------------------------------------------------------------------*/
+$sidebar-separator-tint-shade-amount: 7%;
+
+.sidebar {
+  @include theme-rule(
+    $rule: border-right,
+    $value-template: '1px solid {{color}}',
+    $color-name: 'background-accent',
+    $tint-shade-amount: $sidebar-separator-tint-shade-amount
+  );
+  @include theme-background-accent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sidebar-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: rem($sidebar-width);
+}
+
+.main-logo {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+
+  // Double the selector for higher specificity than theme link rules
+  &#{&} a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-family: $font-stack-jp;
+    font-size: 24px;
+
+    &:hover,
+    &:focus {
+      @include theme-action-foreground;
+    }
+  }
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  padding: 10px 0 10px 10px;
+
+  li {
+    margin-bottom: 5px;
+    margin-right: -1px;
+  }
+  a {
+    @include theme-rule(color, 'foreground', 20%, true);
+    display: block;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    border-right: 0;
+    text-decoration: none;
+    font-weight: $font-weight-semibold;
+
+    &:hover,
+    &:focus {
+      @include theme-rule(background-color, 'background-accent', 3%);
+    }
+  }
+  .active {
+    @include theme-rule(
+      border-color,
+      'background-accent',
+      $sidebar-separator-tint-shade-amount
+    );
+    @include theme-background;
+    @include theme-action-foreground;
+  }
+}
+
+.sidebar-theme-switcher {
+  padding: 10px;
+}

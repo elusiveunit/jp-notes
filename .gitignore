@@ -1,0 +1,15 @@
+# Unversioned
+node_modules
+
+# Only include the custom theme
+themes/*
+!themes/jp-notes
+
+# Various Hugo stuff that probably won't be used on this site
+public/categories
+public/tags
+resources
+
+# Testing stuff locally
+public/fonts
+static/fonts

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}{{ end }}</title>
+
+<script>
+{{/* Script loader function */}}
+window.jpNotesLoadJS=function(src,onLoad){var t=document.getElementsByTagName('script')[0],s=document.createElement('script');
+if(typeof onLoad==='function'){s.onload=onLoad}s.async=true;s.src=src;t.parentNode.insertBefore(s,t);}
+</script>
+
+<script>
+(function(d){
+var html = d.documentElement;
+
+{{/* Set current theme */}}
+var t=(d.cookie.match(/\btheme\s*=\s*([^;]+)/)||[])[1];
+html.classList.add('theme-'+t||'light');
+
+{{/* Load Typekit fonts */}}
+jpNotesLoadJS('https://use.typekit.net/tsy1wxg.js',function(){try{Typekit.load({async:true})}catch(_){}});
+
+{{/* Site scripts, only load if the browser supports ES6 */}}
+var es6Test = 'class あ extends Array{constructor(j="a",...c){const q=(({u:e})=>{return{[`s${c}`]:Symbol(j)};})({});super(j,q,...c);}}' +
+'new Promise((f)=>{const a=function*(){return"\u{20BB7}".match(/./u)[0].length===2||true;};for(let vre of a()){' +
+'const [uw,as,he,re]=[new Set(),new WeakSet(),new Map(),new WeakMap()];break;}f(new Proxy({},{get:(han,h)=>h in han?han[h]' +
+': "a".repeat(0o10)}));}).then(bi=>new あ(bi.rd));';
+try {
+  eval(es6Test);
+  [
+    '{{ "js/theme-switcher.js" | relURL }}'
+  ].forEach(jpNotesLoadJS);
+  html.classList.remove('no-js');
+  html.classList.add('js');
+}catch(_){}
+}(document));
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700">
+<!-- <style>
+@font-face {
+  font-family: 'Source Han Serif';
+  font-weight: 400;
+  src: url('{{ .Site.BaseURL }}/fonts/SourceHanSerifJP-Regular.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Han Serif';
+  font-weight: 700;
+  src: url('{{ .Site.BaseURL }}/fonts/SourceHanSerifJP-Heavy.otf') format('opentype');
+  font-display: swap;
+}
+</style> -->
+
+{{ $styleOptions := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+{{ $style := resources.Get "sass/main.scss" | toCSS $styleOptions | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+</head>
+
+<body class="{{ block "body_class" . }}{{end}}">
+  <div class="sidebar">
+    {{ partial "sidebar.html" . }}
+  </div>
+  <div class="main-body">
+    {{ partial "header.html" . }}
+    <main class="content">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+  </div>
+</body>
+</html>

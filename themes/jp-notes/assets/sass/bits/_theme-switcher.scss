@@ -1,0 +1,58 @@
+.theme-switcher {
+  position: relative;
+  overflow: hidden;
+
+  fieldset {
+    @include theme-tint-shade-transparent(
+      $rule: border,
+      $value-template: '1px solid {{color}}',
+      $amount: 0.15
+    );
+    margin: 0;
+    padding: 5px 10px 10px;
+  }
+  input[type='radio'] {
+    position: absolute;
+    left: -40px;
+  }
+}
+
+.theme-switcher-items {
+  display: flex;
+}
+
+.theme-switcher-item {
+  @include theme-rule(
+    $rule: border,
+    $color-name: 'background-accent',
+    $value-template: '2px solid {{color}}'
+  );
+
+  flex-grow: 1;
+  height: 30px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  &:hover {
+    @include theme-rule(
+      $rule: box-shadow,
+      $color-name: 'action',
+      $value-template: '0 0 0 3px {{color}}'
+    );
+  }
+}
+
+@each $theme-name, $theme-data in $themes {
+  .theme-switcher-item--#{$theme-name} {
+    background: get-theme-color($theme-name, 'background');
+  }
+  #theme-switcher-item-#{$theme-name}:checked
+    ~ .theme-switcher-item--#{$theme-name} {
+    @include theme-rule(
+      $rule: box-shadow,
+      $color-name: 'action',
+      $value-template: '0 0 0 3px {{color}}'
+    );
+  }
+}

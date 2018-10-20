@@ -1,0 +1,17 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "debug": true
+      }
+    ]
+  ],
+  "plugins": [["@babel/plugin-proposal-class-properties", { "loose": true }]],
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+// Hide JS-only stuff if it can't be used.
+.no-js .js-only {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+// Helper classes for toggling visibility.
+.invisible {
+  visibility: hidden !important;
+}
+.hidden {
+  display: none !important;
+}
+
+// Visually hide but keep available for screen readers. From HTML5 Boilerplate.
+@mixin visuallyhidden {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@mixin visuallyhidden-disabled {
+  clip: auto;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  white-space: inherit;
+}
+.visuallyhidden {
+  @include visuallyhidden;
+}
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  @include visuallyhidden-disabled;
+}

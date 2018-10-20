@@ -1,0 +1,51 @@
+/* -Japanese content
+-----------------------------------------------------------------------------*/
+div[lang='ja'],
+p[lang='ja'],
+span[lang='ja'] {
+  font-family: $font-stack-jp;
+  font-weight: $font-weight-jp-regular;
+
+  strong,
+  b {
+    font-weight: $font-weight-jp-bold;
+  }
+}
+
+div[lang='ja'],
+p[lang='ja'] {
+  font-size: 28px;
+}
+
+p[lang='ja'] {
+  margin-bottom: 0;
+}
+
+.jp-block {
+  @include theme-background-accent;
+  @include theme-rule(
+    $rule: border,
+    $value-template: '1px solid {{color}}',
+    $color-name: 'background-accent',
+    $tint-shade-amount: 6%
+  );
+
+  margin-bottom: $base-type-spacing;
+  padding: 5px 0 10px rem($base-type-spacing);
+  border-left-width: 3px !important;
+
+  h2 + &,
+  h3 + &,
+  h4 + & {
+    margin-top: 5px;
+  }
+  p {
+    margin: 3px 0;
+  }
+}
+
+rt {
+  position: relative;
+  top: 0.25em;
+  font-size: 60%;
+}

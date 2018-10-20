@@ -1,0 +1,23 @@
+/* -Global page layout
+-----------------------------------------------------------------------------*/
+$sidebar-calc-width: calc(
+  50% - #{(rem($main-body-width) / 2) + rem($main-body-padding-horizontal)}
+);
+$main-body-calc-width: calc(50% + #{rem($main-body-width)});
+
+body {
+  display: flex;
+  overflow-x: hidden;
+}
+.sidebar {
+  width: $sidebar-calc-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.main-body {
+  width: $main-body-calc-width;
+  // max-width: $main-body-width;
+  margin-left: $sidebar-calc-width;
+}

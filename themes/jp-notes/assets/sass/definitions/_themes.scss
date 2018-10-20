@@ -1,0 +1,142 @@
+/* -Color themes
+-----------------------------------------------------------------------------*/
+// Theme color definitions
+$default-theme: 'light';
+$themes: (
+  light: (
+    type: 'light',
+    background: #fbfdff,
+    background-accent: #f5f7f9,
+    foreground: #223344,
+    action: #2d8dd4,
+  ),
+  dark: (
+    type: 'dark',
+    background: #2d3037,
+    background-accent: #292c33,
+    foreground: #f0f2f4,
+    action: #79b1f8,
+  ),
+  tan: (
+    type: 'light',
+    background: #efe9d3,
+    background-accent: #e7dfcc,
+    foreground: #4a432b,
+    action: #960000,
+  ),
+);
+
+// Helpers for creating mixins
+@function get-theme-color(
+  $theme,
+  $color,
+  $tint-shade-amount: 0%,
+  $tint-shade-reverse: false
+) {
+  $theme-data: map-get-strict($themes, $theme);
+  $theme-color: map-get-strict($theme-data, $color);
+  @if $tint-shade-amount != 0% {
+    $theme-type: map-get-strict($theme-data, 'type');
+    @if ($theme-type == 'light' and not $tint-shade-reverse) or
+      ($theme-type == 'dark' and $tint-shade-reverse)
+    {
+      @return darken($theme-color, $tint-shade-amount);
+    } @else if
+      ($theme-type == 'dark' and not $tint-shade-reverse) or
+      ($theme-type == 'light' and $tint-shade-reverse)
+    {
+      @return lighten($theme-color, $tint-shade-amount);
+    }
+  }
+  @return $theme-color;
+}
+
+@mixin theme-rule(
+  $rule,
+  $color-name,
+  $tint-shade-amount: 0%,
+  $tint-shade-reverse: false,
+  $value-template: '{{color}}'
+) {
+  #{$rule}: unquote(
+    str-replace(
+      $value-template,
+      '{{color}}',
+      get-theme-color(
+        $default-theme,
+        $color-name,
+        $tint-shade-amount,
+        $tint-shade-reverse
+      )
+    )
+  );
+
+  @each $theme-name, $theme-data in $themes {
+    @if $theme-name != $default-theme {
+      .theme-#{$theme-name} & {
+        #{$rule}: unquote(
+          str-replace(
+            $value-template,
+            '{{color}}',
+            get-theme-color(
+              $theme-name,
+              $color-name,
+              $tint-shade-amount,
+              $tint-shade-reverse
+            )
+          )
+        );
+      }
+    }
+  }
+}
+
+@mixin theme-tint-shade-transparent(
+  $rule,
+  $amount,
+  $value-template: '{{color}}',
+  $reverse: false
+) {
+  $light-rule: rgba(0, 0, 0, $amount);
+  $dark-rule: rgba(255, 255, 255, $amount);
+  @if $reverse {
+    $light-rule: rgba(255, 255, 255, $amount);
+    $dark-rule: rgba(0, 0, 0, $amount);
+  }
+
+  #{$rule}: unquote(str-replace($value-template, '{{color}}', $light-rule));
+
+  @each $theme-name, $theme-data in $themes {
+    @if $theme-name != $default-theme {
+      $theme-type: map-get-strict($theme-data, 'type');
+      .theme-#{$theme-name} & {
+        @if $theme-type == 'light' {
+          #{$rule}: unquote(
+            str-replace($value-template, '{{color}}', $light-rule)
+          );
+        } @else if $theme-type == 'dark' {
+          #{$rule}: unquote(
+            str-replace($value-template, '{{color}}', $dark-rule)
+          );
+        }
+      }
+    }
+  }
+}
+
+// Mixins for simple CSS rules
+@mixin theme-foreground {
+  @include theme-rule(color, foreground);
+}
+@mixin theme-background {
+  @include theme-rule(background-color, background);
+}
+@mixin theme-background-accent {
+  @include theme-rule(background-color, background-accent);
+}
+@mixin theme-action-foreground {
+  @include theme-rule(color, action);
+}
+@mixin theme-action-background {
+  @include theme-rule(background-color, action);
+}
