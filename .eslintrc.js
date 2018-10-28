@@ -23,8 +23,34 @@ module.exports = {
         ignoreRegExpLiterals: true,
       },
     ],
+    'prefer-destructuring': [
+      ERROR,
+      {
+        VariableDeclarator: {
+          array: false,
+          object: true,
+        },
+        AssignmentExpression: {
+          array: false,
+          object: true,
+        },
+      },
+      {
+        enforceForRenamedProperties: false,
+      },
+    ],
+    'operator-linebreak': [
+      ERROR,
+      'after',
+      { overrides: { '?': 'before', ':': 'before' } },
+    ],
+
+    // Add
+    'multiline-ternary': ['error', 'always-multiline'],
 
     // Disable
     'class-methods-use-this': OFF,
+    'implicit-arrow-linebreak': OFF,
+    'import/prefer-default-export': OFF,
   },
 };
