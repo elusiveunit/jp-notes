@@ -1,4 +1,4 @@
-baseURL = "http://example.com/jp-notes"
+baseURL = "https://jp-notes.elusiveun.it/"
 languageCode = "en-us"
 title = "Japanese notes"
 theme = "jp-notes"
