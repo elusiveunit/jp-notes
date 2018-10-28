@@ -7,3 +7,16 @@
 .page-header {
   margin-bottom: 1em;
 }
+
+@include media-max(rem($media-query-hidden-sidebar)) {
+  .main-body {
+    margin-top: $small-screen-header-height;
+    padding: 20px ($main-body-padding-horizontal / 2);
+  }
+}
+
+@include media-max(rem(400px)) {
+  .main-body {
+    padding: 15px;
+  }
+}

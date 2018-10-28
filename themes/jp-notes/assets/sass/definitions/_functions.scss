@@ -11,6 +11,14 @@
   @return $px-or-em / $context * 1rem;
 }
 
+// Convert em or rem to px
+@function px($em-or-rem, $context: $base-font-size) {
+  @if unit($em-or-rem) == 'em' {
+    @return ($em-or-rem / 1em) * $context;
+  }
+  @return ($em-or-rem / 1rem) * $context;
+}
+
 // https://hugogiraudel.com/2014/01/13/sass-string-replacement-function/
 // https://www.sassmeister.com/gist/1b4f2da5527830088e4d
 @function str-replace($string, $search, $replace: '') {

@@ -2,16 +2,19 @@
 -----------------------------------------------------------------------------*/
 $table-border-tint-shade-amount: 0.15;
 
+.table-wrap {
+  overflow-x: auto;
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
   font-size: inherit;
   max-width: 100%;
-  overflow-x: auto;
 }
 
 caption {
-  @include h3;
+  @extend %h3;
 }
 
 th,

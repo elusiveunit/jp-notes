@@ -1,0 +1,67 @@
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  // -------------------- Reset layouts -------------------- //
+  body,
+  .main-body {
+    display: block !important;
+    min-width: 0 !important;
+  }
+  .main-body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .page-content {
+    > * {
+      max-width: none !important;
+    }
+  }
+
+  .read-more {
+    margin-top: 2em;
+  }
+
+  // -------------------- Printing tables -------------------- //
+  // Grabbed from HTML5 Boilerplate
+  // http://css-discuss.incutio.com/wiki/Printing_Tables
+
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  table,
+  th,
+  td {
+    border-color: #aaa !important;
+  }
+
+  // -------------------- Hiding elements -------------------- //
+  .sidebar {
+    display: none !important;
+  }
+}

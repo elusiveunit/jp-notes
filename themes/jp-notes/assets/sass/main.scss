@@ -12,13 +12,16 @@
 
 // Page layout
 @import 'layout/global';
-@import 'layout/sidebar';
 @import 'layout/main-body';
 
 // Various bits and parts of content
 @import 'bits/jp';
+@import 'bits/menu-toggle';
 @import 'bits/page-content';
 @import 'bits/theme-switcher';
 
 // Helpers last to let them override where possible
 @import 'base/helpers';
+
+// ...Apart from print styles that should override any other overrides
+@import 'layout/print';

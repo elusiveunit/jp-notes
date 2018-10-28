@@ -1,0 +1,52 @@
+// Styling for the menu toggle button/link itself (it's a link when no JS, a
+// button otherwise). The positioning and display conditions are handled
+// together with the rest of the page layout.
+#menu-toggle {
+  height: $small-screen-header-height;
+  padding: 0 30px 0 15px;
+  border: 0;
+  line-height: $small-screen-header-height;
+  text-decoration: none;
+  background: transparent;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    @include theme-rule(
+      $rule: background-color,
+      $color-name: 'background-accent',
+      $tint-shade-amount: 5%
+    );
+  }
+  &::before,
+  &::after {
+    content: '';
+    box-sizing: content-box;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 16px;
+  }
+  &::before {
+    height: 0;
+    border-top: 3px solid;
+    margin-top: -6px;
+  }
+  &::after {
+    height: 2px;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    margin-top: -1px;
+  }
+  .menu-open &::before {
+    transform: rotate(45deg);
+    margin: -1px 0 0;
+  }
+  .menu-open &::after {
+    transform: rotate(-45deg);
+    height: 0;
+    margin: -1px 0 0;
+    border-bottom: 0;
+  }
+}

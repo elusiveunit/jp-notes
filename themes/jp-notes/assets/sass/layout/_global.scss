@@ -1,23 +1,250 @@
 /* -Global page layout
 -----------------------------------------------------------------------------*/
-$sidebar-calc-width: calc(
-  50% - #{(rem($main-body-width) / 2) + rem($main-body-padding-horizontal)}
-);
-$main-body-calc-width: calc(50% + #{rem($main-body-width)});
+$main-body-rem-width: rem($main-body-width);
+$sidebar-fill-rem-width: ($main-body-rem-width / 2) +
+  rem($main-body-padding-horizontal);
+$sidebar-fill-calc-width: calc(50% - #{$sidebar-fill-rem-width});
+$sidebar-separator-tint-shade-amount: 7%;
 
-body {
-  display: flex;
+html {
   overflow-x: hidden;
 }
+
+// -------------------- Sidebar -------------------- //
 .sidebar {
-  width: $sidebar-calc-width;
+  @include theme-rule(
+    border-color,
+    'background-accent',
+    $sidebar-separator-tint-shade-amount
+  );
+  @include theme-background-accent;
+
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: $sidebar-fill-calc-width;
   top: 0;
   left: 0;
   height: 100%;
+  border-style: solid;
+  border-width: 0;
+  border-right-width: 1px;
+
+  // Prevent <rt> elements from appearing above the 'nav bar' made from the
+  // main logo in small screen mode.
+  z-index: 1;
 }
+.sidebar-inner {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: rem($sidebar-width);
+}
+
+.main-logo {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+
+  // Double the selector for higher specificity than theme link rules
+  &#{&} a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-family: $font-stack-jp;
+    font-size: 24px;
+
+    &:hover,
+    &:focus {
+      @include theme-action-foreground;
+    }
+  }
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  padding: 10px 0 10px 10px;
+
+  li {
+    margin-bottom: 5px;
+    margin-right: -1px;
+  }
+  a {
+    @include theme-rule(color, 'foreground', 20%, true);
+    display: block;
+    padding: 5px 15px;
+    border: 1px solid transparent;
+    border-right-width: 0;
+    text-decoration: none;
+    font-weight: $font-weight-semibold;
+
+    &:hover,
+    &:focus {
+      @include theme-rule(background-color, 'background-accent', 3%);
+    }
+  }
+  .active {
+    @include theme-rule(
+      border-color,
+      'background-accent',
+      $sidebar-separator-tint-shade-amount
+    );
+    @include theme-background;
+    @include theme-action-foreground;
+  }
+}
+
+.sidebar-theme-switcher {
+  width: 100%;
+  padding: 10px;
+}
+
+#menu-toggle {
+  display: none;
+  visibility: hidden;
+}
+
+// -------------------- Main body -------------------- //
 .main-body {
-  width: $main-body-calc-width;
-  // max-width: $main-body-width;
-  margin-left: $sidebar-calc-width;
+  margin-left: $sidebar-fill-calc-width;
+}
+
+// The main body is centered with a sidebar filling up the remaining space on
+// the left, so the screen edge will 'hit' when its size is the main body width
+// including padding plus two sidebar widths.
+// The sidebar width used above is to fill out the space, whereas the width
+// used here is the actual width of the sidebar content.
+@include media-max(
+  $main-body-rem-width + (rem($main-body-padding-horizontal) * 2) +
+    rem($sidebar-width * 2)
+) {
+  .sidebar {
+    width: rem($sidebar-width);
+  }
+  .main-body {
+    width: auto;
+    margin-left: rem($sidebar-width);
+  }
+}
+
+// -------------------- Sidebar hidden or moved -------------------- //
+
+@include media-max(rem($media-query-hidden-sidebar)) {
+  // The sidebar logo turns into a fixed nav bar
+  .main-logo {
+    @include theme-rule(
+      $rule: border-bottom,
+      $color-name: 'background-accent',
+      $value-template: '1px solid {{color}}',
+      $tint-shade-amount: $sidebar-separator-tint-shade-amount
+    );
+    @include theme-background-accent;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: $small-screen-header-height;
+    margin: 0;
+    padding: 0 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    line-height: $small-screen-header-height;
+    text-align: left;
+    z-index: 100;
+
+    a {
+      font-size: 18px !important;
+    }
+  }
+
+  // Menu toggle is positioned to the right in the new logo 'nav bar'
+  #menu-toggle {
+    display: inline-block;
+    visibility: visible;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 200;
+  }
+
+  // Stop 'linking the active item to the page'
+  .sidebar-nav {
+    padding: 10px;
+
+    a {
+      border-right-width: 1px;
+    }
+  }
+
+  .main-body {
+    margin-left: 0;
+  }
+
+  // Without JS, the sidebar moves to the bottom of the page
+  .no-js {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar,
+    .sidebar-inner {
+      width: auto;
+      max-width: none;
+    }
+    .sidebar {
+      display: block;
+      order: 2;
+      position: relative;
+      border-right-width: 0;
+      border-top-width: 1px;
+    }
+    .sidebar-theme-switcher {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  // With JS, it's toggled
+  .js {
+    // Should use transform: translateX(...) instead of left for better
+    // animation performance, but that creates a new stacking context where
+    // the main-logo and menu-toggle fixed positioning will be relative to
+    // the sidebar instead of the viewport, thus making the desired layout
+    // impossible.
+    .sidebar {
+      left: -$sidebar-width;
+      width: 90vw;
+      max-width: $sidebar-width;
+      padding-top: $small-screen-header-height;
+      transition: left 0.1s ease;
+    }
+    .sidebar-inner {
+      max-width: none;
+    }
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 0;
+      opacity: 0;
+      transition: opacity 0.1s ease;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .menu-open {
+      .sidebar,
+      .menu-overlay {
+        transition-duration: 0.2s;
+      }
+      .sidebar {
+        left: 0;
+      }
+      .menu-overlay {
+        height: 100%;
+        opacity: 1;
+      }
+    }
+  }
 }

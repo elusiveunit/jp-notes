@@ -1,8 +1,11 @@
 import { getCookie, setCookie } from './modules/cookies';
-import domReady from './modules/domReady';
+import { ready } from './modules/dom';
 
 const COOKIE_NAME = 'theme';
 
+/**
+ * Control for switching between the site's different color schemes.
+ */
 class ThemeSwitcher {
   constructor() {
     this.inputs = Array.from(
@@ -38,6 +41,6 @@ class ThemeSwitcher {
   }
 }
 
-domReady(() => {
+ready(() => {
   window.THEME_SWITCHER = new ThemeSwitcher();
 });

@@ -2,12 +2,24 @@
 -----------------------------------------------------------------------------*/
 div[lang='ja'],
 p[lang='ja'],
-span[lang='ja'] {
+span[lang='ja'],
+ruby[lang='ja'] {
   font-family: $font-stack-jp;
   font-weight: $font-weight-jp-regular;
 
   strong,
   b {
+    font-weight: $font-weight-jp-bold;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  span[lang='ja'],
+  ruby[lang='ja'] {
     font-weight: $font-weight-jp-bold;
   }
 }
@@ -31,7 +43,7 @@ p[lang='ja'] {
   );
 
   margin-bottom: $base-type-spacing;
-  padding: 5px 0 10px rem($base-type-spacing);
+  padding: 5px rem($base-type-spacing) 10px rem($base-type-spacing);
   border-left-width: 3px !important;
 
   h2 + &,
@@ -48,4 +60,15 @@ rt {
   position: relative;
   top: 0.25em;
   font-size: 60%;
+}
+
+@include media-max(rem($media-query-smaller-type)) {
+  div[lang='ja'],
+  p[lang='ja'] {
+    font-size: 21px;
+  }
+  .jp-block {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
