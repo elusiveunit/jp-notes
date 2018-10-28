@@ -12,6 +12,8 @@ window.jpNotesLoadJS=function(src,onLoad){var t=document.getElementsByTagName('s
 if(typeof onLoad==='function'){s.onload=onLoad}s.async=true;s.src=src;t.parentNode.insertBefore(s,t);}
 </script>
 
+{{ $modules := slice "responsive" "fast-nav" "theme-switcher" -}}
+
 <script>
 (function(d){
 var html = d.documentElement;
@@ -31,7 +33,10 @@ var es6Test = 'class あ extends Array{constructor(j="a",...c){const q=(({u:e})=
 try {
   eval(es6Test);
   [
-    '{{ "js/theme-switcher.js" | relURL }}'
+  {{- range $index, $module := $modules }}
+    {{- $fileName := (printf "%s.%s" $module (cond $.Site.IsServer "js" "min.js")) }}
+    '{{ printf "%s/%s" (relURL "js") $fileName }}?v={{ readFile (printf "/themes/jp-notes/static/js/%s" $fileName) | md5 }}'{{ if lt (add $index 1) (len $modules) }},{{ end -}}
+  {{ end }}
   ].forEach(jpNotesLoadJS);
   html.classList.remove('no-js');
   html.classList.add('js');
