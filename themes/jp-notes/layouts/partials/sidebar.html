@@ -5,11 +5,11 @@
     </a>
   </div>
 
-  <nav class="sidebar-nav">
+  <nav class="sidebar-nav" id="menu">
     <ul>
-      <li><a class="sidebar-nav-item{{ if .Page.IsHome }} active{{ end }}" href="{{ .Site.BaseURL }}">Start</a></li>
-      {{ range .Site.RegularPages.ByTitle }}
-        <li><a class="sidebar-nav-item{{ if eq .URL $.RelPermalink }} active{{ end }}" href="{{ .URL }}">{{ .Title }}</a></li>
+      <li><a id="nav-start" class="sidebar-nav-item{{ if .Page.IsHome }} active{{ end }}" href="{{ .Site.BaseURL }}">Start</a></li>
+      {{ range .Site.RegularPages.ByTitle -}}
+        <li><a id="nav-{{ .Title | urlize }}" class="sidebar-nav-item{{ if eq .URL $.RelPermalink }} active{{ end }}" href="{{ .URL }}">{{ .Title }}</a></li>
       {{ end }}
     </ul>
   </nav>
