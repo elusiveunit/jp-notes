@@ -1,5 +1,6 @@
 # Unversioned
 node_modules
+_local
 
 # Only include the custom theme
 themes/*
