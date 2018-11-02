@@ -6,6 +6,9 @@
 
 <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}{{ end }}</title>
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://use.typekit.net">
+
 <script>
 {{/* Script loader function */}}
 window.jpNotesLoadJS=function(src,onLoad){var t=document.getElementsByTagName('script')[0],s=document.createElement('script');
