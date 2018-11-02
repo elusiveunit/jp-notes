@@ -2,6 +2,7 @@
   "name": "jp-notes",
   "private": true,
   "version": "0.1.0",
+  "homepage": "https://jp-notes.elusiveun.it/",
   "scripts": {
     "start": "hugo server --buildDrafts --buildFuture --disableFastRender",
     "build": "cross-env BABEL_ENV=production rollup -c && hugo --cleanDestinationDir --gc",
