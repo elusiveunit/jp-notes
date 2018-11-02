@@ -1,0 +1,19 @@
+{
+  "name": "Japanese notes",
+  "short_name": "Japanese notes",
+  "icons": [
+    {
+      "src": "/android-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#e60012",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
