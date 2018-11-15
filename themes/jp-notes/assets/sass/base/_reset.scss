@@ -2,11 +2,13 @@
 -----------------------------------------------------------------------------*/
 // Combination of a classic reset and normalize.css. Not using normalize
 // as-is since we mostly don't want default browser styles.
+//
+// A bunch of unused stuff is commented out to reduce the CSS size, but kept in
+// case it's needed in the future.
 
 // Remove default spacing, essentially making everything a semantic div.
 html,
 body,
-iframe,
 h1,
 h2,
 h3,
@@ -18,7 +20,6 @@ blockquote,
 pre,
 img,
 figure,
-small,
 dl,
 dt,
 dd,
@@ -55,16 +56,8 @@ html {
   box-sizing: border-box;
 }
 
-// Correct display in older IE
-article,
-aside,
-figcaption,
-figure,
-footer,
-header,
-main,
-nav,
-section {
+// Render the `main` element consistently in IE.
+main {
   display: block;
 }
 
@@ -77,11 +70,11 @@ a {
 
 // 1. Remove the bottom border in Chrome 57- and Firefox 39-.
 // 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
-abbr[title] {
-  border-bottom: none; // 1
-  text-decoration: underline; // 2
-  text-decoration: underline dotted; // 2
-}
+// abbr[title] {
+//   border-bottom: none; // 1
+//   text-decoration: underline; // 2
+//   text-decoration: underline dotted; // 2
+// }
 
 // Normalized weight in all browsers.
 b,
@@ -90,33 +83,33 @@ strong {
 }
 
 // 1. Correct the odd em font sizing in all browsers.
-pre,
-code {
-  font-family: Consolas, monospace;
-  font-size: 1em; // 1
-}
+// pre,
+// code {
+//   font-family: Consolas, monospace;
+//   font-size: 1em; // 1
+// }
 
 // Prevent sub and sup elements from affecting the line height in all browsers.
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-sub {
-  bottom: -0.25em;
-}
-sup {
-  top: -0.5em;
-}
+// sub,
+// sup {
+//   font-size: 75%;
+//   line-height: 0;
+//   position: relative;
+//   vertical-align: baseline;
+// }
+// sub {
+//   bottom: -0.25em;
+// }
+// sup {
+//   top: -0.5em;
+// }
 
 // Limit embedded media to container size.
-img,
+img/* ,
 object,
 embed,
 iframe,
-video {
+video */ {
   max-width: 100%;
   width: auto;
   height: auto;
@@ -140,13 +133,13 @@ svg:not(:root) {
   display: none;
 }
 
-// 1. Change the font styles in all browsers (opinionated).
+// 1. Change the font styles in all browsers.
 // 2. Remove the margin in Firefox and Safari.
-button,
+button/* ,
 input,
 optgroup,
 select,
-textarea {
+textarea */ {
   font-family: sans-serif; // 1
   font-size: 100%; // 1
   line-height: 1.15; // 1
@@ -168,11 +161,11 @@ select {
 }
 
 // Disable vendor specific form control styling
-input[type='search'],
-input[type='search']::-webkit-search-decoration,
-input[type='button'],
-input[type='reset'],
-input[type='submit'] {
+// input[type='search'],
+// input[type='search']::-webkit-search-decoration,
+// input[type='reset'],
+// input[type='submit'],
+input[type='button'] {
   -webkit-appearance: none;
 }
 button::-moz-focus-inner,
@@ -186,16 +179,14 @@ input::-moz-focus-inner {
 legend {
   display: table; // 1
   max-width: 100%; // 1
-  padding: 0 0.5em;
-  font-size: 14px;
-  color: inherit; // 2
   white-space: normal; // 1
+  color: inherit; // 2
 }
 
 // Remove the default vertical scrollbar in IE.
-textarea {
-  overflow: auto;
-}
+// textarea {
+//   overflow: auto;
+// }
 
 // Remove padding in IE
 input[type='checkbox'],
@@ -205,25 +196,25 @@ input[type='radio'] {
 }
 
 // Correct the cursor style of increment and decrement buttons in Chrome.
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
-  height: auto;
-}
+// [type='number']::-webkit-inner-spin-button,
+// [type='number']::-webkit-outer-spin-button {
+//   height: auto;
+// }
 
 // Correct the outline style in Safari.
-input[type='search'] {
-  outline-offset: -2px;
-}
+// input[type='search'] {
+//   outline-offset: -2px;
+// }
 
 // Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
-[type='search']::-webkit-search-cancel-button,
-[type='search']::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
+// [type='search']::-webkit-search-cancel-button,
+// [type='search']::-webkit-search-decoration {
+//   -webkit-appearance: none;
+// }
 
 // 1. Correct the inability to style clickable types in iOS and Safari.
 // 2. Inherit font properties in Safari.
-::-webkit-file-upload-button {
-  -webkit-appearance: button; // 1
-  font: inherit; // 2
-}
+// ::-webkit-file-upload-button {
+//   -webkit-appearance: button; // 1
+//   font: inherit; // 2
+// }

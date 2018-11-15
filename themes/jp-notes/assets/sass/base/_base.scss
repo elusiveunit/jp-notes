@@ -10,16 +10,15 @@ body {
 body,
 button,
 input,
-textarea,
-kbd {
+textarea {
   @include theme-foreground;
   font-family: $font-stack-main;
 }
 
-pre,
-code {
-  font-family: $font-stack-mono;
-}
+// pre,
+// code {
+//   font-family: $font-stack-mono;
+// }
 
 // Links
 a:link,
@@ -33,16 +32,16 @@ a:focus {
 
 // Cursors for form elements
 label,
-button,
+button/* ,
 input[type='button'],
 input[type='reset'],
-input[type='submit'] {
+input[type='submit'] */ {
   cursor: pointer;
 }
-button[disabled],
-input[disabled] {
-  cursor: not-allowed;
-}
+// button[disabled],
+// input[disabled] {
+//   cursor: not-allowed;
+// }
 
 // Navigation
 nav {

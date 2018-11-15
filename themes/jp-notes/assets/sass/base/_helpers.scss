@@ -5,12 +5,12 @@
 }
 
 // Helper classes for toggling visibility.
-.invisible {
-  visibility: hidden !important;
-}
-.hidden {
-  display: none !important;
-}
+// .invisible {
+//   visibility: hidden !important;
+// }
+// .hidden {
+//   display: none !important;
+// }
 
 // Visually hide but keep available for screen readers. From HTML5 Boilerplate.
 @mixin visuallyhidden {
