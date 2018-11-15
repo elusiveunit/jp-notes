@@ -26,7 +26,16 @@ $themes: (
   ),
 );
 
-// Helpers for creating mixins
+/// Get a defined theme color.
+///
+/// @param {string} $theme - The theme name/ID.
+/// @param {string} $color - The color name/ID.
+/// @param {percentage} $tint-shade-amount [0%] - Amount of tint or shade to
+///   apply to the color, depending on the theme.
+/// @param {boolean} $tint-shade-reverse [false] - By default a tint/shade
+///   value for light theme will darken the color. With $reverse true it will
+///   be the opposite.
+/// @return {color} The final color.
 @function get-theme-color(
   $theme,
   $color,
@@ -41,16 +50,25 @@ $themes: (
       ($theme-type == 'dark' and $tint-shade-reverse)
     {
       @return darken($theme-color, $tint-shade-amount);
-    } @else if
-      ($theme-type == 'dark' and not $tint-shade-reverse) or
-      ($theme-type == 'light' and $tint-shade-reverse)
-    {
-      @return lighten($theme-color, $tint-shade-amount);
     }
+    @return lighten($theme-color, $tint-shade-amount);
   }
   @return $theme-color;
 }
 
+/// Create a rule for every theme.
+///
+/// @param {string} $rule - The rule name (e.g. border-color).
+/// @param {string} $color-name - Name/ID of the color to use for the rule.
+/// @param {percentage} $tint-shade-amount [0%] - Amount of tint or shade to
+///   apply to the color, depending on the theme.
+/// @param {boolean} $tint-shade-reverse [false] - By default a tint/shade
+///   value for light theme will darken the color. With $reverse true it will
+///   be the opposite.
+/// @param {string} $value-template ['{{color}}'] - Template for the rule value,
+///   where {{color}} is replaced with the final color. Use for rules where the
+///   the value contains more than just the color, e.g. '1px solid {{color}}'
+///   for a border shorthand rule.
 @mixin theme-rule(
   $rule,
   $color-name,
@@ -91,6 +109,16 @@ $themes: (
   }
 }
 
+/// Create an rgba() rule for every theme.
+///
+/// @param {string} $rule - The rule name (e.g. border-color).
+/// @param {number} $amount - Opacity between 0 and 1.
+/// @param {string} $value-template ['{{color}}'] - Template for the rule value,
+///   where {{color}} is replaced with the final color. Use for rules where the
+///   the value contains more than just the color, e.g. '1px solid {{color}}'
+///   for a border shorthand rule.
+/// @param {boolean} $reverse [false] - By default a light theme results in a
+///   black layer. With $reverse true it will be the opposite.
 @mixin theme-tint-shade-transparent(
   $rule,
   $amount,
