@@ -1,6 +1,8 @@
 .theme-switcher {
   position: relative;
-  overflow: hidden;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: visible;
 
   fieldset {
     @include theme-tint-shade-transparent(
@@ -29,6 +31,7 @@
   );
 
   flex-grow: 1;
+  position: relative;
   height: 30px;
 
   &:not(:last-child) {
@@ -37,9 +40,41 @@
   &:hover {
     @include theme-rule(
       $rule: box-shadow,
-      $color-name: 'action',
-      $value-template: '0 0 0 3px {{color}}'
+      $color-name: 'foreground',
+      $value-template: '0 0 0 3px {{color}}',
+      $tint-shade-amount: 10%,
+      $tint-shade-reverse: true
     );
+  }
+}
+
+.theme-switcher-item-label {
+  @include theme-light-dark($rule: background-color);
+  @include theme-light-dark($rule: color, $reverse: true);
+
+  display: inline-block;
+  position: absolute;
+  bottom: 100%;
+  left: -200px;
+  transform: translateX(-50%);
+  margin-bottom: 12px;
+  padding: 4px 6px 5px;
+  border-radius: 3px;
+  font-size: rem(12px);
+  line-height: 1;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    box-sizing: content-box;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    @include theme-light-dark(border-top-color);
   }
 }
 
@@ -54,5 +89,23 @@
       $color-name: 'action',
       $value-template: '0 0 0 3px {{color}}'
     );
+  }
+  #theme-switcher-item-#{$theme-name}:focus
+    ~ .theme-switcher-item--#{$theme-name} {
+    @include theme-rule(
+      $rule: box-shadow,
+      $color-name: 'foreground',
+      $value-template: '0 0 0 3px {{color}}',
+      $tint-shade-amount: 10%,
+      $tint-shade-reverse: true
+    );
+  }
+  #theme-switcher-item-#{$theme-name}:hover
+    ~ .theme-switcher-item--#{$theme-name},
+  #theme-switcher-item-#{$theme-name}:focus
+    ~ .theme-switcher-item--#{$theme-name} {
+    .theme-switcher-item-label {
+      left: 50%;
+    }
   }
 }

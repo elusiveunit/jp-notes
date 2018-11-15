@@ -56,6 +56,24 @@ $themes: (
   @return $theme-color;
 }
 
+/// Get a plain light or dark color depending on the theme type.
+///
+/// @param {string} $theme - The theme name/ID.
+/// @param {boolean} $reverse [false] - By default a light theme results in a
+///   dark color. With $reverse true it will be the opposite.
+/// @return {color} The resulting color.
+@function get-theme-light-dark($theme, $reverse: false) {
+  $theme-data: map-get-strict($themes, $theme);
+  $theme-type: map-get-strict($theme-data, 'type');
+  @if ($theme-type == 'light' and not $reverse) or
+    ($theme-type == 'dark' and $reverse)
+  {
+    @return #222;
+  }
+
+  @return #fff;
+}
+
 /// Create a rule for every theme.
 ///
 /// @param {string} $rule - The rule name (e.g. border-color).
@@ -147,6 +165,39 @@ $themes: (
             str-replace($value-template, '{{color}}', $dark-rule)
           );
         }
+      }
+    }
+  }
+}
+
+/// Create a plain light/dark color rule for every theme.
+///
+/// @param {string} $rule - The rule name (e.g. border-color).
+/// @param {string} $value-template ['{{color}}'] - Template for the rule value,
+///   where {{color}} is replaced with the final color. Use for rules where the
+///   the value contains more than just the color, e.g. '1px solid {{color}}'
+///   for a border shorthand rule.
+/// @param {boolean} $reverse [false] - By default a light theme results in a
+///   black layer. With $reverse true it will be the opposite.
+@mixin theme-light-dark($rule, $value-template: '{{color}}', $reverse: false) {
+  #{$rule}: unquote(
+    str-replace(
+      $value-template,
+      '{{color}}',
+      get-theme-light-dark($default-theme, $reverse)
+    )
+  );
+
+  @each $theme-name, $theme-data in $themes {
+    @if $theme-name != $default-theme {
+      .theme-#{$theme-name} & {
+        #{$rule}: unquote(
+          str-replace(
+            $value-template,
+            '{{color}}',
+            get-theme-light-dark($theme-name, $reverse)
+          )
+        );
       }
     }
   }
