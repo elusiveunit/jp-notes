@@ -7,7 +7,6 @@
 <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}{{ end }}</title>
 <meta name="description" content="A random collection of personal notes on Japanese from a learner.">
 
-<link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://use.typekit.net">
 
 <meta name="theme-color" content="#e60012">
@@ -54,8 +53,6 @@ try {
 }catch(_){}
 }(document));
 </script>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700">
 
 {{- $styleOptions := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" true) -}}
 {{- $style := resources.Get "sass/main.scss" | toCSS $styleOptions | minify | fingerprint }}

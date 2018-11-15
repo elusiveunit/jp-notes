@@ -27,8 +27,9 @@ $media-query-smaller-type: 550px;
 
 /* -Type
 -----------------------------------------------------------------------------*/
-$font-stack-main: 'Source Sans Pro', sans-serif;
-$font-stack-mono: Consolas, monospace;
+$font-stack-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+$font-stack-mono: Consolas, SFMono-Regular, monospace;
 $font-stack-jp: 'Source Han Serif', source-han-serif-japanese, serif;
 
 $font-weight-regular: 400;
