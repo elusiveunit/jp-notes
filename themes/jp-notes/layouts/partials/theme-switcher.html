@@ -5,19 +5,20 @@
     <legend>Theme</legend>
     <div class="theme-switcher-items">
       {{ range $theme := $themes -}}
-      <input
-        type="radio"
-        name="theme-switcher-item"
-        id="theme-switcher-item-{{ $theme }}"
-        value="{{ $theme }}"
-      />
-      {{ end }} {{ range $theme := $themes -}}
-      <label
-        class="theme-switcher-item theme-switcher-item--{{ $theme }}"
-        for="theme-switcher-item-{{ $theme }}"
-      >
-        <span class="theme-switcher-item-label">{{ humanize $theme }}</span>
-      </label>
+        <input
+          type="radio"
+          name="theme-switcher-item"
+          id="theme-switcher-item-{{ $theme }}"
+          value="{{ $theme }}"
+        />
+      {{ end }}
+      {{ range $theme := $themes -}}
+        <label
+          class="theme-switcher-item theme-switcher-item--{{ $theme }}"
+          for="theme-switcher-item-{{ $theme }}"
+        >
+          <span class="theme-switcher-item-label">{{ humanize $theme }}</span>
+        </label>
       {{ end }}
     </div>
   </fieldset>
