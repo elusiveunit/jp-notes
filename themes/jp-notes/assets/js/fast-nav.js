@@ -33,6 +33,10 @@ class FastNav {
       this.content.innerHTML,
     );
 
+    // Keep the initial page in cache to avoid an unnecessary fetch if going
+    // back to it via the menu.
+    this.cache[window.location.href] = this.pageLoadState;
+
     this.bindListeners();
   }
 
