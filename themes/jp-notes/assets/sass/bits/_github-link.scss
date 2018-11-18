@@ -1,0 +1,46 @@
+$github-link-size: 45px;
+$github-icon-size: 18px;
+$github-icon-spacing: 8px;
+
+.github-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: $github-icon-spacing $github-icon-spacing
+    ($github-link-size - $github-icon-spacing - $github-icon-size)
+    ($github-link-size - $github-icon-spacing - $github-icon-size);
+  text-align: center;
+  line-height: 1;
+
+  svg {
+    @include theme-rule(
+      $rule: fill,
+      $color-name: 'background-accent',
+      $tint-shade-amount: 25%
+    );
+
+    display: inline-block;
+    width: $github-icon-size;
+    height: $github-icon-size;
+    vertical-align: top;
+    transition: fill 0.2s ease;
+  }
+  &:hover,
+  &:focus {
+    svg {
+      @include theme-rule(
+        $rule: fill,
+        $color-name: 'background-accent',
+        $tint-shade-amount: 60%
+      );
+    }
+  }
+
+  @include media-max(rem($media-query-hidden-sidebar)) {
+    position: fixed;
+    right: auto;
+    left: 0;
+    padding: (($small-screen-header-height - $github-icon-size) / 2);
+    z-index: $z-small-screen-github-link;
+  }
+}

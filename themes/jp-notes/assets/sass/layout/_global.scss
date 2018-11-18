@@ -150,8 +150,7 @@ html {
     padding: 0 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     line-height: $small-screen-header-height;
-    text-align: left;
-    z-index: 100;
+    z-index: $z-small-screen-header;
 
     a {
       font-size: 18px !important;
@@ -165,7 +164,7 @@ html {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 200;
+    z-index: $z-menu-toggle;
   }
 
   // Stop 'linking the active item to the page'

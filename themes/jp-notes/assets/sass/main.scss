@@ -3,6 +3,7 @@
 @import 'definitions/functions';
 @import 'definitions/mixins';
 @import 'definitions/themes';
+@import 'definitions/z-index';
 
 // Base styles
 @import 'base/reset';
@@ -15,6 +16,7 @@
 @import 'layout/main-body';
 
 // Various bits and parts of content
+@import 'bits/github-link';
 @import 'bits/jp';
 @import 'bits/menu-toggle';
 @import 'bits/page-content';
