@@ -6,6 +6,17 @@ $sidebar-fill-rem-width: ($main-body-rem-width / 2) +
 $sidebar-fill-calc-width: calc(50% - #{$sidebar-fill-rem-width});
 $sidebar-separator-tint-shade-amount: 7%;
 
+$loading-bar-height: 3px;
+
+@keyframes loading-bar-height {
+  from {
+    height: $loading-bar-height;
+  }
+  to {
+    height: 0;
+  }
+}
+
 html {
   overflow-x: hidden;
 }
@@ -72,6 +83,7 @@ html {
   padding: 10px 0 10px 10px;
 
   li {
+    position: relative;
     margin-bottom: 5px;
     margin-right: -1px;
   }
@@ -99,6 +111,35 @@ html {
     );
     @include theme-background;
     @include theme-action-foreground;
+  }
+
+  // Loading bar
+  .loading-bar {
+    @include theme-rule(background-color, 'background-accent', 15%);
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .loading-bar--active,
+  .loading-bar--done {
+    width: 100%;
+    height: $loading-bar-height;
+  }
+  .loading-bar--active {
+    transition: width 4s ease-out, height 0.3s ease-out;
+    z-index: 10;
+  }
+  .loading-bar--done {
+    transition: width 0.3s ease-out;
+    z-index: 20;
+  }
+  .loading-bar--done,
+  .loading-bar--done ~ .loading-bar--active {
+    animation: loading-bar-height 0.3s ease 0.3s forwards;
   }
 }
 
