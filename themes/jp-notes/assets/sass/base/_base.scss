@@ -6,6 +6,11 @@ body {
 }
 body {
   @include theme-background;
+
+  // Theme switching transition
+  transition: background-color 0.2s ease;
+
+  position: relative;
 }
 body,
 button,
@@ -24,6 +29,9 @@ textarea {
 a:link,
 a:visited {
   @include theme-action-foreground;
+
+  // Theme switching transition
+  transition: color 0.2s ease;
 }
 a:hover,
 a:focus {

@@ -19,6 +19,9 @@ html {
   );
   @include theme-background-accent;
 
+  // Theme switching transition
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -47,6 +50,7 @@ html {
   margin-bottom: 20px;
   padding: 10px;
   text-align: center;
+  transition: color 0.2s ease;
 
   // Double the selector for higher specificity than theme link rules
   &#{&} a {
@@ -77,6 +81,8 @@ html {
     padding: 5px 15px;
     border: 1px solid transparent;
     border-right-width: 0;
+    transition: background-color 0.2s ease, color 0.2s ease,
+      border-color 0.2s ease;
     text-decoration: none;
     font-weight: $font-weight-semibold;
 
