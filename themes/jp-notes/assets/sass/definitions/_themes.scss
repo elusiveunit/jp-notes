@@ -9,6 +9,7 @@ $themes: (
     background-accent: #f5f7f9,
     foreground: #223344,
     action: #2d8dd4,
+    action-foreground: #fff,
   ),
   dark: (
     type: 'dark',
@@ -16,6 +17,7 @@ $themes: (
     background-accent: #292c33,
     foreground: #f0f2f4,
     action: #79b1f8,
+    action-foreground: #fff,
   ),
   tan: (
     type: 'light',
@@ -23,6 +25,7 @@ $themes: (
     background-accent: #e7dfcc,
     foreground: #4a432b,
     action: #960000,
+    action-foreground: #fff,
   ),
 );
 
@@ -205,17 +208,17 @@ $themes: (
 
 // Mixins for simple CSS rules
 @mixin theme-foreground {
-  @include theme-rule(color, foreground);
+  @include theme-rule(color, 'foreground');
 }
 @mixin theme-background {
-  @include theme-rule(background-color, background);
+  @include theme-rule(background-color, 'background');
 }
 @mixin theme-background-accent {
-  @include theme-rule(background-color, background-accent);
+  @include theme-rule(background-color, 'background-accent');
 }
 @mixin theme-action-foreground {
-  @include theme-rule(color, action);
+  @include theme-rule(color, 'action');
 }
 @mixin theme-action-background {
-  @include theme-rule(background-color, action);
+  @include theme-rule(background-color, 'action');
 }

@@ -60,15 +60,18 @@ try {
 </head>
 
 <body class="{{ block "body_class" . }}{{end}}">
+  <a class="skiplink visuallyhidden visuallyhidden--focusable" href="#main">Skip to content</a>
   <div class="sidebar">
     {{ partial "sidebar.html" . }}
   </div>
   <div class="main-body">
     {{ partial "header.html" . }}
-    <main class="content">
+    <main id="main" class="content">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}
   </div>
+
+  <script src='{{ "js/skiplink" | relURL }}.{{ cond $.Site.IsServer "js" "min.js" }}' async></script>
 </body>
 </html>

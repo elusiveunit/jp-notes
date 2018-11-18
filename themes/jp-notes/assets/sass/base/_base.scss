@@ -30,6 +30,11 @@ a:focus {
   text-decoration: none;
 }
 
+// Focus set with JS for accessibility reasons, don't show outline
+[tabindex='-1'] {
+  outline: 0;
+}
+
 // Cursors for form elements
 label,
 button/* ,

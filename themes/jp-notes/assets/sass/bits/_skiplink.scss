@@ -1,0 +1,14 @@
+// Double selector for greater specificity than visuallyhidden--focusable
+.skiplink.skiplink:focus {
+  @include theme-rule(background-color, 'action');
+  @include theme-rule(color, 'action-foreground');
+
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 5px 15px;
+  outline: 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}

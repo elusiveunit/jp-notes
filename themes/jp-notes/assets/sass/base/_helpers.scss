@@ -36,7 +36,7 @@
 .visuallyhidden {
   @include visuallyhidden;
 }
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
+.visuallyhidden--focusable:active,
+.visuallyhidden--focusable:focus {
   @include visuallyhidden-disabled;
 }
