@@ -35,11 +35,10 @@ html.classList.add('theme-'+t||'light');
 {{/* Load Typekit fonts */}}
 jpNotesLoadJS('https://use.typekit.net/tsy1wxg.js',function(){try{Typekit.load({async:true})}catch(_){}});
 
-{{/* Site scripts, only load if the browser supports ES6 */}}
-var es6Test = 'class あ extends Array{constructor(j="a",...c){const q=(({u:e})=>{return{[`s${c}`]:Symbol(j)};})({});super(j,q,...c);}}' +
-'new Promise((f)=>{const a=function*(){return"\u{20BB7}".match(/./u)[0].length===2||true;};for(let vre of a()){' +
-'const [uw,as,he,re]=[new Set(),new WeakSet(),new Map(),new WeakMap()];break;}f(new Proxy({},{get:(han,h)=>h in han?han[h]' +
-': "a".repeat(0o10)}));}).then(bi=>new あ(bi.rd));';
+{{/* Site scripts, only load if the browser supports ES6+ */}}
+var es6Test = 'class 六 extends Array{constructor(a=1,x,...b){const c=(({u:e})=>({[`s${b}`]:Symbol(a)}))({});super(a,c,...b)}}' +
+'(async function(){let o={a:1};return await Promise.resolve({...o})})().then((o,)=>new 六());';
+
 try {
   eval(es6Test);
   [
