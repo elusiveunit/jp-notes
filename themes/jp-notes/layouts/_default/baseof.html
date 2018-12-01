@@ -26,14 +26,18 @@ if(typeof onLoad==='function'){s.onload=onLoad}s.async=true;s.src=src;t.parentNo
 
 <script>
 (function(d){
-var html = d.documentElement;
+'use strict';
+var html = d.documentElement, conn = navigator.connection;
 
 {{/* Set current theme */}}
 var t=(d.cookie.match(/\btheme\s*=\s*([^;]+)/)||[])[1];
 html.classList.add('theme-'+t||'light');
 
-{{/* Load Typekit fonts */}}
-jpNotesLoadJS('https://use.typekit.net/tsy1wxg.js',function(){try{Typekit.load({async:true})}catch(_){}});
+{{/* Load Typekit fonts, opting out where the Network Information API is
+supported and reports a slow connection */}}
+if (conn && (conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g')) {} else {
+  jpNotesLoadJS('https://use.typekit.net/tsy1wxg.js',function(){try{Typekit.load({async:true})}catch(_){}});
+}
 
 {{/* Site scripts, only load if the browser supports ES6+ */}}
 var es6Test = 'class 六 extends Array{constructor(a=1,x,...b){const c=(({u:e})=>({[`s${b}`]:Symbol(a)}))({});super(a,c,...b)}}' +
