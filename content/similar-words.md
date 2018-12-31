@@ -22,3 +22,10 @@ draft: false
 > In some dictionaries, <span lang="ja">水田</span> seems to be defined as something like "<span lang="ja">田</span> filled with water", as if dry <span lang="ja">田んぼ</span> were not <span lang="ja">水田</span>. IMHO you can ignore this definition and think <span lang="ja">水田</span> almost always just means "rice field".
 
 <cite>https://japanese.stackexchange.com/q/37115</cite>
+
+## <ruby lang="ja"><rb>全</rb><rt>ぜん</rt><rb>部</rb><rt>ぶ</rt></ruby> and <ruby lang="ja"><rb>全</rb><rt>すべ</rt>て</ruby>
+
+<!-- prettier-ignore -->
+> According to [goo dictionary](http://dictionary.goo.ne.jp/leaf/jn2/119767/m0u/), <span lang="ja">すべて</span> and <span lang="ja">全部</span> are interchangeable in a lot of situations. However, <span lang="ja">すべて</span> may be used more in articles, and <span lang="ja">全部</span> more in conversations <span lang="ja">(「すべて」は文章語的で、「みな」「全部」は口語的である。)</span>.
+
+<cite>https://japanese.stackexchange.com/q/4261</cite>
